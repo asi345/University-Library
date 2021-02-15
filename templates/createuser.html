@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Create a New User {% endblock %}</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="TCNO">TC Number</label>
+        <input type="text" name="TCNO"
+               placeholder="TC Number value" class="form-control"
+               value="{{ request.form['TCNO'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <label for="FIRSTNAME">First Name</label>
+        <input type="text" name="FIRSTNAME"
+               placeholder="First name" class="form-control"
+               value="{{ request.form['FIRSTNAME'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <label for="LASTNAME">Last Name</label>
+        <input type="text" name="LASTNAME"
+               placeholder="Last name" class="form-control"
+               value="{{ request.form['LASTNAME'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+    {% if isempty == True %}
+    	<p>TC Number, First name and Last name are required!</p>
+    {% endif %}
+
+</form>
+{% endblock %}
+

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Borrow a Book {% endblock %}</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="ISBN">ISBN of the book to be borrowed</label>
+        <input type="text" name="ISBN"
+               placeholder="ISBN value" class="form-control"
+               value="{{ request.form['ISBN'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <label for="TCNO">TC Number of the borrower</label>
+        <input type="text" name="TCNO"
+               placeholder="TC Number value" class="form-control"
+               value="{{ request.form['TCNO'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+    {% if isempty == True %}
+    	<p>ISBN and TC Number are required!</p>
+    {% endif %}
+
+    {% if isborrowable == False %}
+    	<p>This user can not take more books!</p>
+    {% endif %}
+</form>
+{% endblock %}
+
+

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Create a New Book {% endblock %}</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="ISBN">ISBN</label>
+        <input type="text" name="ISBN"
+               placeholder="ISBN value" class="form-control"
+               value="{{ request.form['ISBN'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <label for="Title">Title</label>
+        <input type="text" name="Title"
+               placeholder="Title name" class="form-control"
+               value="{{ request.form['Title'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <label for="Author">Author</label>
+        <input type="text" name="Author"
+               placeholder="Author name" class="form-control"
+               value="{{ request.form['Author'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+    {% if isempty == True %}
+    	<p>ISBN, Title and Author are required!</p>
+    {% endif %}
+
+</form>
+{% endblock %}
